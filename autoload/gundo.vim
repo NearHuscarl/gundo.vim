@@ -119,12 +119,22 @@ function! s:GundoMapGraph()"{{{
     nnoremap <script> <silent> <buffer> <up>          :call <sid>GundoMove(-1)<CR>
     nnoremap <script> <silent> <buffer> gg            gg:call <sid>GundoMove(1)<CR>
     nnoremap <script> <silent> <buffer> P             :call <sid>GundoPlayTo()<CR>
-    nnoremap <script> <silent> <buffer> p             :call <sid>GundoRenderChangePreview()<CR>
+    " nnoremap <script> <silent> <buffer> p             :call <sid>GundoRenderChangePreview()<CR>
     nnoremap <script> <silent> <buffer> r             :call <sid>GundoRenderPreview()<CR>
     nnoremap <script> <silent> <buffer> q             :call <sid>GundoClose()<CR>
     cabbrev  <script> <silent> <buffer> q             call <sid>GundoClose()
     cabbrev  <script> <silent> <buffer> quit          call <sid>GundoClose()
     nnoremap <script> <silent> <buffer> <2-LeftMouse> :call <sid>GundoMouseDoubleClick()<CR>
+
+   nnoremap <silent> <plug>GundoMoveDown              :call <sid>GundoMove(1)<CR>
+   nnoremap <silent> <plug>GundoMoveUp                :call <sid>GundoMove(-1)<CR>
+   nnoremap <silent> <plug>GundoMoveDOWN              :call <sid>GundoMove(4)<CR>
+   nnoremap <silent> <plug>GundoMoveUP                :call <sid>GundoMove(-4)<CR>
+   nnoremap <silent> <plug>GundoRevert                :call <sid>GundoRevert()<CR>
+   nnoremap <silent> <plug>GundoPlayTo                :call <sid>GundoPlayTo()<CR>
+   nnoremap <silent> <plug>GundoRenderChangePreview   :call <sid>GundoRenderChangePreview()<CR>
+   nnoremap <silent> <plug>GundoRenderPreview         :call <sid>GundoRenderPreview()<CR>
+   nnoremap <silent> <plug>GundoClose                 :call <sid>GundoClose()<CR>
 endfunction"}}}
 
 function! s:GundoMapPreview()"{{{
@@ -134,6 +144,8 @@ function! s:GundoMapPreview()"{{{
 endfunction"}}}
 
 function! s:GundoSettingsGraph()"{{{
+   highlight ntCursor guifg=NONE guibg=NONE
+   set guicursor=n:ntCursor
     setlocal buftype=nofile
     setlocal bufhidden=hide
     setlocal noswapfile
